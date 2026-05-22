@@ -1,0 +1,32 @@
+{
+  "heartbeat_interval_seconds": 15,
+  "stall_timeout_seconds": 30,
+  "max_recovery_attempts": 3,
+  "recovery_cooldown_seconds": 30,
+  "recovery_strategy": "graceful",
+  "enable_notifications": false,
+  "discord_webhook_url": "",
+  "model_endpoints": {
+    "primary": "qwen/qwen3.5-9b",
+    "backup": ""
+  },
+  "logging_verbosity": "info",
+  "auto_restart_hermes_after_failures": false,
+  "monitor_subsystems": [
+    "main_loop",
+    "api_client", 
+    "model_server",
+    "discord_notifier",
+    "terminal"
+  ],
+  "status_transitions": {
+    "idle": [],
+    "processing": ["idle"],
+    "waiting_for_input": ["processing", "completed", "failed"],
+    "completed": ["waiting_for_input"],
+    "failed": ["waiting_for_input"],
+    "stalled": ["processing", "waiting_for_input"],
+    "disconnected": ["model_server"],
+    "rate_limited": ["api_client"]
+  }
+}
