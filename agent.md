@@ -38,6 +38,9 @@ When the user says "prepare my next video", "prep the next vid", or "I want to m
 ### Kanban Delivery
 When creating video-related kanban tasks, always use `--board gameysins` and link dependencies (planning → scripting → recording → editing → publishing → shorts).
 
+### Auto-Backup
+~/.hermes/SOUL.md, agent.md, and heartbeat_config.json auto-backup to GitHub (extragbgd-lang/hermes-backup) every 2 days at midnight via cron. Uses change detection — skips if nothing changed. Config.yaml is excluded (contains API keys). Token stored at ~/.hermes/.github_backup_token (chmod 600).
+
 ## Memory & Skills Hygiene
 
 - **Memory** = durable facts only (preferences, env quirks, things I corrected)
